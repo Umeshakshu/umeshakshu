@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 🤍</title>
+
+<style>
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    color: white;
+    text-align: center;
+    background: #000;
+}
+
+/* PARALLAX BACKGROUND */
+.parallax {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url("photo01.jpg.JPG");
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* PASSWORD SCREEN */
+#startScreen {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+input {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* CONTENT */
+.section {
+    padding: 80px 15px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.gallery, .videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.gallery img, video {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 20px;
+    margin: 60px auto;
+    max-width: 700px;
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: fixed;
+    color: rgba(255, 77, 109, 0.4);
+    animation: float 7s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="startScreen">
+    <h1>For You 🤍</h1>
+    <p>Enter our password</p>
+    <input type="password" id="password" placeholder="Our secret">
+    <button onclick="unlock()">Begin</button>
+</div>
+
+<!-- MUSIC FIXED (.mp3.MP3) -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3.MP3" type="audio/mpeg">
+</audio>
+
+<div id="content" style="display:none;">
+
+<div class="parallax">
+    <h1>Our Story</h1>
+    <p>Some love stories are felt, not told.</p>
+</div>
+
+<div class="section">
+
+<div class="quote">
+"Every picture here holds a heartbeat."
+</div>
+
+<div class="gallery">
+<img src="photo01.jpg.JPG">
+<img src="photo02.jpg.JPG">
+<img src="photo03.jpg.JPG">
+<img src="photo04.jpg.JPG">
+<img src="photo05.jpg.JPG">
+<img src="photo06.jpg.JPG">
+<img src="photo07.jpg.JPG">
+<img src="photo08.jpg.JPG">
+<img src="photo09.jpg.JPG">
+<img src="photo10.jpg.JPG">
+<img src="photo11.jpg.JPG">
+<img src="photo12.jpg.JPG">
+<img src="photo13.jpg.JPG">
+<img src="photo14.jpg.JPG">
+<img src="photo15.jpg.JPG">
+</div>
+
+<div class="quote">
+"We didn’t capture moments — we captured forever."
+</div>
+
+<div class="videos">
+<video controls src="video01.mp4.MP4"></video>
+<video controls src="video02.mp4.MP4"></video>
+<video controls src="video03.mp4.MP4"></video>
+<video controls src="video04.mp4.MP4"></video>
+<video controls src="video05.mp4.MP4"></video>
+<video controls src="video06.mp4.MP4"></video>
+<video controls src="video07.mp4.MP4"></video>
+</div>
+
+<div class="quote">
+"Even if time changes everything, my heart still chooses you."
+</div>
+
+<p style="font-size:20px; margin-top:80px;">
+<strong>
+My love, I’m always here for you.<br>
+In every season, every storm, every joy —<br>
+you are my home, my heart, my everything.
+</strong>
+</p>
+
+</div>
+</div>
+
+<script>
+function unlock() {
+    var pass = document.getElementById("password").value;
+    if(pass === "akshuumashankar") {
+        document.getElementById("startScreen").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("bgMusic").play();
+        createHearts();
+    } else {
+        alert("Wrong password 🤍");
+    }
+}
+
+function createHearts() {
+    setInterval(function() {
+        var heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (10 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+    }, 800);
+}
+</script>
+
+</body>
+</html>
